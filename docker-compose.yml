@@ -125,20 +125,20 @@ services:
       - ${CONFIG_DIR}/nzbget:/config
       - ${DOWNLOAD_DIR}/nzb:/downloads/nzb
 
- # sonarr:
- #   image: ghostserverd/sonarr
- #   container_name: sonarr
- #   restart: always
- #   ports:
- #     - "${SONARR_PORT}:8989"
- #   environment:
- #     - PUID=${PUID}
- #     - PGID=${PGID}
- #     - TZ=${TIMEZONE}
- #   volumes:
- #     - ${CONFIG_DIR}/sonarr:/config
- #     - ${DOWNLOAD_DIR}:/data/completed/tv/
- #     - ${TV_DIR}:/tv
+  sonarr:
+    image: ghostserverd/sonarr
+    container_name: sonarr
+    restart: always
+    ports:
+      - "${SONARR_PORT}:8989"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIG_DIR}/sonarr:/config
+      - ${DOWNLOAD_DIR}:/data/completed/tv/
+      - ${TV_DIR}:/tv
 
  # radarr:
  #   image: ghostserverd/radarr
