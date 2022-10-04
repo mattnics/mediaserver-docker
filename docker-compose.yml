@@ -310,6 +310,18 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONFIG_DIR}/portainer:/data
 
+  overseerr:
+    image: sctx/overseerr:latest
+    container_name: overseerr
+    environment:
+      - LOG_LEVEL=debug
+      - TZ=${TIMEZONE}
+    ports:
+      - 5055:5055
+    volumes:
+      - ${CONFIG_DIR}/overseerr:/app/config
+    restart: unless-stopped
+
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
