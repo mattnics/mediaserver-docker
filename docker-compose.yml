@@ -140,20 +140,20 @@ services:
       - ${DOWNLOAD_DIR}:/data/completed/tv/
       - ${TV_DIR}:/tv
 
- # radarr:
- #   image: ghostserverd/radarr
-#    container_name: radarr
-#    restart: always
-#    ports:
-#      - "${RADARR_PORT}:7878"
-#    environment:
-#      - PUID=${PUID}
-#      - PGID=${PGID}
-#      - TZ=${TIMEZONE}
-#    volumes:
-#      - ${CONFIG_DIR}/radarr:/config
-#      - ${DOWNLOAD_DIR}:/data/completed/movies/
-#      - ${MOVIES_DIR}:/movies
+  radarr:
+    image: ghostserverd/radarr
+    container_name: radarr
+    restart: always
+    ports:
+      - "${RADARR_PORT}:7878"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIG_DIR}/radarr:/config
+      - ${DOWNLOAD_DIR}:/data/completed/movies/
+      - ${MOVIES_DIR}:/movies
 
 #  bazarr:
 #    image: ghostserverd/bazarr
@@ -213,19 +213,19 @@ services:
   #    - "/dev/dri/card0:/dev/dri/card0"
   #    - "/dev/dri/renderD128:/dev/dri/renderD128"
 
-  tautulli:
-    image: ghostserverd/tautulli
-    container_name: tautulli
-    restart: always
-    ports:
-      - "${TAUTULLI_PORT}:8181"
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-    volumes:
-      - ${CONFIG_DIR}/tautulli:/config
-      - "${CONFIG_DIR}/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro"
+ # tautulli:
+ #   image: ghostserverd/tautulli
+ #  container_name: tautulli
+ #   restart: always
+ #   ports:
+ #     - "${TAUTULLI_PORT}:8181"
+ #   environment:
+ #     - PUID=${PUID}
+ #     - PGID=${PGID}
+ #     - TZ=${TIMEZONE}
+ #   volumes:
+ #     - ${CONFIG_DIR}/tautulli:/config
+ #     - "${CONFIG_DIR}/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro"
 
   heimdall:
     image: ghostserverd/heimdall
@@ -289,16 +289,16 @@ services:
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock:rw
 
-  ddclient:
-    image: linuxserver/ddclient
-    container_name: ddclient
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TIMEZONE}
-    volumes:
-      - ${CONFIG_DIR}/ddclient:/config
-    restart: always
+#  ddclient:
+#    image: linuxserver/ddclient
+#    container_name: ddclient
+#    environment:
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+#      - TZ=${TIMEZONE}
+#    volumes:
+#      - ${CONFIG_DIR}/ddclient:/config
+#    restart: always
 
   portainer:
     image: portainer/portainer-ce
