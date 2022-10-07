@@ -83,6 +83,19 @@ services:
       - ${CONFIG_DIR}/overseerr:/app/config
     restart: unless-stopped
 
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:develop
+    container_name: prowlarr
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${CONFIG_DIR}/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
