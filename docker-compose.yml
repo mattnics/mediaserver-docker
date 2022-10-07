@@ -13,7 +13,7 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
       - NZBGET_USER=${NZBGET_WEB_USER}
-      - NNZBGET_PASS=${NZBGET_WEB_PASS}
+      - NZBGET_PASS=${NZBGET_WEB_PASS}
     volumes:
       - ${CONFIG_DIR}/nzbget:/config
       - ${DOWNLOAD_DIR}:/downloads
