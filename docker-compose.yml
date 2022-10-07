@@ -45,7 +45,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/radarr:/config
-      - ${DOWNLOAD_DIR}:/data/completed/movies/
+      - ${DOWNLOAD_DIR}:/downloads
       - ${MOVIES_DIR}:/movies
 
   lidarr:
