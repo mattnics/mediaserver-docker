@@ -30,7 +30,7 @@ services:
       - TZ=${TIMEZONE}
     volumes:
       - ${CONFIG_DIR}/sonarr:/config
-      - ${DOWNLOAD_DIR}:/data/completed/tv/
+      - ${DOWNLOAD_DIR}:/downloads
       - ${TV_DIR}:/tv
 
   radarr:
