@@ -3,7 +3,7 @@ version: "3"
 services:
 
   nzbget:
-    image: ghostserverd/nzbget
+    image: lscr.io/linuxserver/nzbget:latest
     container_name: nzbget
     restart: always
     ports:
@@ -23,34 +23,7 @@ services:
       - RADARR_PORT=${RADARR_PORT}
     volumes:
       - ${CONFIG_DIR}/nzbget:/config
-      - ${DOWNLOAD_DIR}/nzb:/downloads/nzb
-
-  filebot:
-      image: ghostserverd/filebot:4.9.x
-      container_name: filebot
-      restart: always
-      ports:
-        - "${FILEBOT_PORT}:${FILEBOT_PORT}"
-      environment:
-        - PUID=${PUID}
-        - PGID=${PGID}
-        - TZ=${TIMEZONE}
-        - FILEBOT_PORT=${FILEBOT_PORT}
-        - FILEBOT_FORMAT=${FILEBOT_FORMAT}
-        - FILEBOT_FILTER=${FILEBOT_FILTER}
-        - FILEBOT_ACTION=${FILEBOT_ACTION}
-        - FILEBOT_CONFLICT=${FILEBOT_CONFLICT}
-        - FILEBOT_SERIES_DB=${FILEBOT_SERIES_DB}
-        - FILEBOT_ANIME_DB=${FILEBOT_ANIME_DB}
-        - FILEBOT_MOVIE_DB=${FILEBOT_MOVIE_DB}
-        - FILEBOT_MUSIC_DB=${FILEBOT_MUSIC_DB}
-        - OPEN_SUB_USER=${OPEN_SUB_USER}
-        - OPEN_SUB_PASS=${OPEN_SUB_PASS}
-      volumes:
-        - ${CONFIG_DIR}/filebot:/config
-        - ${DOWNLOAD_DIR}:/downloads
-        - ${MEDIA_DIR}:/media
-        - ${BASE_DIR}:/share
+      - ${DOWNLOAD_DIR}:/downloads
 
   sonarr:
     image: ghostserverd/sonarr
